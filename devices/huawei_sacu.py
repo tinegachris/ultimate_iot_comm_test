@@ -36,7 +36,6 @@ for i in range(0, len(sacu_bms_id)):
 # HuaweiSacu registers list
 sacu_serial_num_reg = 40713 # string type, 10 registers
 
-
 # This class is used to test Huawei SACU device.
 class test_HuaweiSacu:
     def __init__(self):
@@ -44,7 +43,6 @@ class test_HuaweiSacu:
         self.modbus = ModbusTcpTest(sacu_ip_address, port_number)
         # Create a Timer object.
         self.timer = Timer()
-        # Create a Logger object.
         self.logger = Logger()
     
     # initiate connection to HuaweiSacu device.
@@ -74,6 +72,8 @@ if __name__ == "__main__":
         Logger.info("Connection to HuaweiSacu device is successful.")
         # Read the serial number of HuaweiSacu device.
         Logger.info("Reading the serial number of HuaweiSacu device...")
+        # Reset the timer.
+        test_sacu.timer.reset()
         # Start the timer.
         test_sacu.timer.start()
         # Read the serial number of HuaweiSacu device.
@@ -84,6 +84,11 @@ if __name__ == "__main__":
         Logger.info("Serial number of HuaweiSacu device: " + serial_num)
         # Display the time taken to read the serial number.
         Logger.info("Time taken to read the serial number: " + str(test_sacu.timer.elapsed_time()) + " seconds.")
+        
+    else:
+        Logger.error("Connection to HuaweiSacu device is unsuccessful.")
     
     # Close the connection to the HuaweiSacu device.
     test_sacu.disconnect()
+
+# End of script.

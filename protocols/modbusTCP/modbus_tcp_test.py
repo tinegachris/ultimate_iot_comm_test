@@ -24,7 +24,7 @@ class ModbusTcpTest:
             Logger.log("Failed to connect to the Modbus TCP server.")
         # Return the connection status.
         return self.client.is_socket_open()
-    
+
     # Disconnect from the Modbus TCP server.
     def disconnect(self):
         self.client.close()
@@ -35,7 +35,7 @@ class ModbusTcpTest:
             Logger.log("Failed to disconnect from the Modbus TCP server.")
         # Return the disconnection status.
         return not self.client.is_socket_open()
-    
+
     # Read 16-bit integer values from the Modbus TCP server.
     def read_int16(self, address, count):
         # Read 16-bit integer values from the Modbus TCP server.
@@ -51,7 +51,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_16bit_int())
         # Return the 16-bit integer values.
         return values
-    
+
     # Write 16-bit integer values to the Modbus TCP server.
     def write_int16(self, address, values):
         # Encode the 16-bit integer values.
@@ -67,7 +67,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read 16-bit float values from the Modbus TCP server.
     def read_float16(self, address, count):
         # Read 16-bit float values from the Modbus TCP server.
@@ -83,7 +83,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_16bit_float())
         # Return the 16-bit float values.
         return values
-    
+
     # Write 16-bit float values to the Modbus TCP server.
     def write_float16(self, address, values):
         # Encode the 16-bit float values.
@@ -99,7 +99,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read 32-bit integer values from the Modbus TCP server.
     def read_int32(self, address, count):
         # Read 32-bit integer values from the Modbus TCP server.
@@ -115,7 +115,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_32bit_int())
         # Return the 32-bit integer values.
         return values
-    
+
     # Write 32-bit integer values to the Modbus TCP server.
     def write_int32(self, address, values):
         # Encode the 32-bit integer values.
@@ -131,7 +131,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read 32-bit float values from the Modbus TCP server.
     def read_float32(self, address, count):
         # Read 32-bit float values from the Modbus TCP server.
@@ -147,7 +147,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_32bit_float())
         # Return the 32-bit float values.
         return values
-    
+
     # Write 32-bit float values to the Modbus TCP server.
     def write_float32(self, address, values):
         # Encode the 32-bit float values.
@@ -163,7 +163,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read 64-bit integer values from the Modbus TCP server.
     def read_int64(self, address, count):
         # Read 64-bit integer values from the Modbus TCP server.
@@ -179,7 +179,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_64bit_int())
         # Return the 64-bit integer values.
         return values
-    
+
     # Write 64-bit integer values to the Modbus TCP server.
     def write_int64(self, address, values):
         # Encode the 64-bit integer values.
@@ -195,7 +195,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read 64-bit float values from the Modbus TCP server.
     def read_float64(self, address, count):
         # Read 64-bit float values from the Modbus TCP server.
@@ -211,7 +211,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_64bit_float())
         # Return the 64-bit float values.
         return values
-    
+
     # Write 64-bit float values to the Modbus TCP server.
     def write_float64(self, address, values):
         # Encode the 64-bit float values.
@@ -227,7 +227,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read boolean values from the Modbus TCP server.
     def read_bool(self, address, count):
         # Read boolean values from the Modbus TCP server.
@@ -238,7 +238,7 @@ class ModbusTcpTest:
             return None
         # Return the boolean values.
         return result.bits
-    
+
     # Write boolean values to the Modbus TCP server.
     def write_bool(self, address, values):
         # Write boolean values to the Modbus TCP server.
@@ -249,7 +249,7 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     # Read string values from the Modbus TCP server.
     def read_string(self, address, count):
         # Read string values from the Modbus TCP server.
@@ -265,7 +265,7 @@ class ModbusTcpTest:
             values.append(decoder.decode_string(2))
         # Return the string values.
         return values
-    
+
     # Write string values to the Modbus TCP server.
     def write_string(self, address, values):
         # Encode the string values.
@@ -281,8 +281,8 @@ class ModbusTcpTest:
             return False
         # Return the writing status.
         return True
-    
+
     if __name__ == "__main__":
         pass
-    
+
 # End of file: comm_protocols/modbus_tcp_test.py

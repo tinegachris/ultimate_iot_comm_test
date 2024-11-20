@@ -1,0 +1,30 @@
+{
+  "huawei": {
+    "sacu": {
+      "host": "",
+      "port": 0,
+      "username": "",
+      "password": "",
+      "registers": {
+        "register1": {
+          "name": "",
+          "type": "",
+          "address": 0,
+          "length": 0
+        },
+        "register2": {
+          "name": "",
+          "type": "",
+          "address": 0,
+          "length": 0
+        }
+      }
+    },
+    "pvi": {
+      "host": "",
+      "port": 0,
+      "username": "",
+      "password": ""
+    }
+  }
+}

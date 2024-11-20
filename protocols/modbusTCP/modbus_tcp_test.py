@@ -8,6 +8,7 @@ from pymodbus.constants import Endian
 from pymodbus.payload import BinaryPayloadBuilder
 from utils import Logger
 
+
 # This class is used to test the Modbus TCP protocol.
 class ModbusTcpTest:
     def __init__(self):

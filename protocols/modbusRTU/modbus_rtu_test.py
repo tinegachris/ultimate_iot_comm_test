@@ -14,14 +14,14 @@ logging.basicConfig(
 log = logging.getLogger()
 
 # Constants
-PORT = os.getenv("MODBUS_PORT", "/dev/ttyUSB2")
+PORT = os.getenv("MODBUS_PORT", "COM6") # "COM7" for Windows or "/dev/ttyUSB2" for Linux
 STOPBITS = int(os.getenv("MODBUS_STOPBITS", 1))
 BYTESIZE = int(os.getenv("MODBUS_BYTESIZE", 8))
 PARITY = os.getenv("MODBUS_PARITY", 'N')
-BAUDRATE = int(os.getenv("MODBUS_BAUDRATE", 19200))
+BAUDRATE = int(os.getenv("MODBUS_BAUDRATE", 11500))
 TIMEOUT = int(os.getenv("MODBUS_TIMEOUT", 2))
-UNIT_IDS = range(1, 2)
-MAX_RETRIES = 2
+UNIT_IDS = range(1, 37)
+MAX_RETRIES = 1
 
 # register_address, register_count, decode, register_name
 REGISTER_ADDRESSES_READ = [
@@ -30,7 +30,7 @@ REGISTER_ADDRESSES_READ = [
 
 # register_address, register_count, builder_key, register_name, value
 REGISTER_ADDRESSES_WRITE = [
-  (40100, 1, 'build_16bit_uint', 'dcdc_command', 1),
+  (40100, 1, 'build_16bit_uint', 'dcdc_command', 14),
 ]
 
 DECODERS = {
@@ -68,7 +68,7 @@ BUILDERS = {
 def read_register(client: ModbusClient, unit_id: int, register_address: int, register_count: int, decode: Optional[str]) -> Union[int, float, str, None]:
   for _ in range(MAX_RETRIES):
     try:
-      rr = client.read_input_registers(register_address, register_count, unit=unit_id)
+      rr = client.read_input_registers(address=register_address, count=register_count, slave=unit_id)
       if not rr.isError():
         if decode:
           return DECODERS[decode](rr.registers)
@@ -106,7 +106,7 @@ def write_register(client: ModbusClient, unit_id: int, register_address: int, va
       else:
         log.error(f"Invalid value type for register {register_address}")
         return False
-      wb = client.write_registers(register_address, builder.to_registers(), unit=unit_id)
+      wb = client.write_registers(register_address, builder.to_registers(), slave=unit_id)
       if not wb.isError():
         log.info(f"Successfully wrote value {value} to register {register_address} for unit {unit_id}")
         return True
